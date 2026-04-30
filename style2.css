@@ -1,0 +1,22 @@
+label{
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+label::before{
+        content:"*";
+        color:red
+}
+      label:first-of-type::before
+      {
+      content: "💕";
+}
+label:last-of-type::before{
+    content: "💕";
+}
+
+
+button{
+    background-color: grey;
+    padding: 10px 30px;
+}

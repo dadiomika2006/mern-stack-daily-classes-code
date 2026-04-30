@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            background-image: linear-gradient(45deg, red, gold);
+        }
+
+        header>div {
+            margin-left: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+
+        header ol {
+            display: flex;
+            width: 600px;
+            justify-content: space-evenly;
+            align-items: center;
+            list-style: none;
+        }
+
+        header img {
+            height: 60px;
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        ol>li {
+            background-color: gray;
+            padding: 10px 30px;
+            border-radius: 8px;
+        }
+
+        header h2 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            margin-left: 50px;
+        }
+
+        li>a {
+            color: aliceblue;
+            text-decoration: none;
+        }
+
+        main {
+            background-image: radial-gradient(gray, black);
+        }
+
+        main h1 {
+            text-align: center;
+            margin: 30px;
+            color: aliceblue;
+            text-shadow: 5px 5px 5px black;
+            font-style: italic;
+        }
+
+        main h1::first-letter {
+            font-size: 50px;
+        }
+
+        main section {
+            padding: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        main section>div {
+            border-radius: 20px;
+            padding: 20px;
+            background-color: burlywood;
+        }
+
+        section img {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/IBM_logo_in.jpg" alt="">
+            <h2>XYZ</h2>
+        </div>
+        <nav>
+            <ol>
+                <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+                        </svg> Home</a></li>
+                <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                            <path fill-rule="evenodd"
+                                d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                        </svg> Login</a></li>
+                <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-menu-button" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A1.5 1.5 0 0 1 1.5 0h8A1.5 1.5 0 0 1 11 1.5v2A1.5 1.5 0 0 1 9.5 5h-8A1.5 1.5 0 0 1 0 3.5zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5z" />
+                            <path
+                                d="m7.823 2.823-.396-.396A.25.25 0 0 1 7.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0M0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5" />
+                        </svg> Register</a></li>
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact</a></li>
+            </ol>
+        </nav>
+    </header>
+
+
+    <main>
+        <h1>Welcome To My Page</h1>
+        <section>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+
+        </section>
+
+
+
+        <section>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+
+        </section>
+
+
+        <section>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+
+        </section>
+
+
+        <section>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+
+        </section>
+
+        <section>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInwp3KwXrDSLlYu5VB6A5wwEG-yblJD_EOw&s"
+                    alt="">
+                <p>
+                <h4>Name:Laptop</h4>
+                <h4>Price:500000</h4>
+                <h4>Ratings:⭐⭐⭐⭐</h4>
+                <span>
+                    <button>Buy</button>
+                    <button>Add Cart</button>
+                </span>
+                </p>
+            </div>
+
+        </section>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
