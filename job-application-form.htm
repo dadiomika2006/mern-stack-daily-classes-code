@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form actions="">
+        <fieldset>
+            <h1>Job Application Form</h1>
+            <label for="fname">First name :</label>
+            <input type="text"maxlength="8"minlength="3"required placeholder="enter Firstname">
+            <br><br>
+            <label for="lname">Lastname:</label>
+            <input type="text"id="lname" placeholder="enter Lastname"minlength="3" maxlength="5">
+            <br><br>
+            <label for="email">Email ID:</label>
+            <input type="email" required placeholder="enter email id">
+            <br><br>
+            <label for="phno">phone number:</label>
+            <input type="tel"  pattern=""[6-9]{1}[0-9]{9}"id="phno" required placeholder="+91">
+            <br><br>
+            <label for="DOB">Date Of Birth:</label>
+            <input type="date">
+            <br><br>
+            <label for="gender">Gender:</label>
+            <input type="radio" name="gender" value="male">male
+            <input type="radio" name="gender" value="female">female
+            <br><br>
+             <label for="state">State:</label>
+            <select>
+                <option value="AP"> AP </option>
+                <option value="MP"> MP </option>
+                <option value="HYD"> HYD </option>
+                <option value="UP"> UP </option>
+            </select>
+            <br><br>
+            <label for="address"> Address:</label>
+            <textarea name="" rows="3" cols="30" id="address" placeholder="Enter full address"></textarea>
+            <br><br>
+            <label for="skills">skills: </label>
+            <input type="checkbox"name= "skills" value="react.js">react.js
+            <input type="checkbox" name="skills" value="git">git
+            <input type="checkbox" name="skills" value="mongoDB">mongoDB
+            <input type="checkbox" name="skills" value="express.js">express.js
+            <br><br>
+            <lable for="lang">Language:</lable>
+            <input type="range">hindi
+            <input type="range">english
+            <input type="range">telugu
+            <br><br>
+            <button type="submit">submit</button>
+            <button type="submit">cancel</button>
+            <br><br>
+            <label for="Resume">Resume:</label>
+            <input type="file">
+            <br><br>
+        </fieldset>
+    </form>
+
+</body>
+</html>
