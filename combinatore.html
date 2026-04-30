@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* adjacent sibling Selector:  
+        used to select direct adjacent elements*/
+        ol+h1 {
+            background-color: plum;
+            color: red;
+        }
+
+        /* child selector  */
+        h4>p {
+            background-color: red;
+            color: aliceblue;
+        }
+
+        /* child select : used to target direct child elements */
+        ol>li {
+            margin: 20px;
+            background-color: green;
+        }
+
+        /* descendent selector:used to target direct or indirect child elements  */
+        ul p {
+            background-color: magenta;
+        }
+
+        /* general sibling Selector:  used to select direct and indirect adjacent elements*/
+        ol~h1 {
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Order list</h1>
+    <ol>
+        <li>List-1</li>
+        <li>List-2</li>
+        <li>List-3</li>
+        <li>List-4</li>
+    </ol>
+    <h1>unordered List</h1>
+    <ul>
+        <li>
+            <p>This is paragraph present in unordered list</p>
+        </li>
+        <li>unordered list items</li>
+        <li>unordered list items</li>
+        <li>unordered list items</li>
+    </ul>
+    <h1>Heading in 3rd position</h1>
+    <h3>
+
+        <h4>
+            <p>Heading 4</p>
+        </h4>
+
+    </h3>
+</body>
+
+</html>
