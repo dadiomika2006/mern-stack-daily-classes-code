@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 2;
+      }
+      ol {
+        background-color: blueviolet;
+        padding: 20px 0px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+        
+        flex-wrap: wrap;
+      }
+      li {
+        color: cornflowerblue;
+        background-color: antiquewhite;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-style: italic;
+        text-shadow: 2px 2px 2px;
+        margin: 0px 30px;
+        text-align: center;
+        list-style: none;
+      }
+      video{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+      #electronic-devices {
+        padding-top:450px ;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        position: relative;
+        bottom: 150px;
+        backdrop-filter: blur(10px);
+        flex-wrap: wrap;
+      }
+      #electronic-devices>div {
+        height: 450px;
+        width: 350px;
+        border: 5px solid green;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 20px;
+        padding: 10px 20px;
+        background-color:rgb(81, 123, 81);
+        animation-name: moving;
+        animation-duration: 4s;
+      }
+      h1 {
+        position: absolute;
+        top: 150px;
+        left: 40%;
+        backdrop-filter: blur(10px);
+        text-shadow: 4px 4px 4px aliceblue;
+        padding: 10px 30px;
+        box-shadow: 5px 5px 5px black; 
+        height: 40px;
+        width: 360px;
+        border-top: 5px solid aliceblue;
+        animation-name: scaling;
+        animation-duration: 3s;
+        background-color: antiquewhite;
+      }
+      #product-card img{
+        height: 250px;
+        width: 250px;
+        border-radius: 10px;
+      }
+       #product-info h4{
+        font-size: 20px;
+       }
+      #product-info h4, p{
+        color: rgb(1, 7, 12);
+        font-style: italic;
+        margin-left: 25px;
+      }
+      .btn-container>button{
+        padding: 10px 20px;
+        font-weight: bold;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        border-radius: 8px;
+        border: none;
+        margin: 10px 20px;
+        font-style: italic;
+        font-size: 19px;
+      }
+      .btn-container>button:first-child{
+        background-color: rgb(144, 82, 202);
+      }
+      .btn-container>button:last-child{
+        background-color: rgb(130, 130, 215);
+      }
+      #electronic-devices-section{
+        position: relative;
+        top: 150px;
+        z-index: 1;
+        font-size: 40px;
+        font-style: italic;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      }
+      #electronic-devices-section:hover{
+        text-decoration: underline;
+        text-shadow: 2px 2px 2px aliceblue;
+        color: pointer;
+        transform: scaley(1.5);
+      }
+      #product-card img:hover{
+        transform: skew(10deg);
+        box-shadow: 2px 2px 2px aliceblue;
+      }
+      aside{
+        border: 2px solid black;
+        padding: 10px;
+        display: inline-flex;
+        flex-direction: column;
+        position: fixed;
+        top: 40%;
+        z-index: 1;
+        margin-left: 10px;
+        border-radius:50px ;
+        height: 250px;
+        justify-content: space-evenly;
+        background-image: linear-gradient(transparent, black);
+      }
+      aside img:hover{
+        cursor: pointer;
+        box-shadow: 2px 2px 2px black;
+        transform: translateX(10px);
+       
+      }
+      aside img{
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+      }
+      @keyframes scaling{
+        0%{
+          transform: scale(0);
+        }
+        25%{
+          transform: rotate(0deg);
+        }
+        75%{
+          transform: rotate(360deg);
+        }
+        100%{
+          transform: scale(1);
+        }
+      }
+      @keyframes moving{
+        from{
+          transform: translate(200px);
+        }
+        to{
+          transform: translate(0px);
+        }
+      }
+      body{
+        background-color: aliceblue;
+        animation-name: bgColorChange;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-delay: 5s;
+      }
+      @keyframes bgColorChange{
+        0%{
+          background-color: aquamarine;
+        }
+        20%{
+          background-color: aqua;
+        }
+        30%{
+          background-color: blue;
+        }
+        40%{
+          background-color: brown;
+        }
+        50%{
+          background-color: blueviolet;
+        }
+        60%{
+          background-color: black;
+        }
+        70%{
+          background-color: bisque;
+        }
+        80%{
+
+          background-color: rgb(150, 150, 49);
+        }
+        90%{
+          background-color: rgb(93, 62, 16);
+        }
+        100%{
+          background-color: rgb(66, 36, 95);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ol>
+        <li>HOME</li>
+        <li>ABOUT</li>
+        <li>TO CONTACT</li>
+        <li>HELP</li>
+        <li>LOGIN</li>
+      </ol>
+    </nav>
+
+    <main>
+      <section id="background-video">
+        <video autoplay muted loop>
+          <source src="./nature_video.mp4" type="video/mp4" />
+        </video>
+      </section>
+      <section>
+        <h1>Welcome to Alpha Mart</h1>
+      </section>
+      <h2 id="electronic-devices-section">Electronic Devices:</h2>
+      <section id="electronic-devices">
+        <div id="product-card">
+          <img src="./OIP.webp" alt="" />
+        
+          <div class="product-info">
+            <h4>Name: Laptop</h4>
+            <h4>Cost:₹50000</h4>
+            <h4>Rating:4.5/5</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              voluptate reiciendis praesentium beatae libero omnis tempore
+              delectus nam, dolorem, molestias, animi perferendis ea quasi eius
+              exercitationem maiores a nesciunt sed.
+            </p>
+          <div class="btn-container">
+            <button>Buy</button>
+            <button>Add card</button>
+          </div>
+          </div>
+        </div>
+        <div id="product-card">
+          <img src="./OIP.webp" alt="" />
+        
+          <div class="product-info">
+            <h4>Name: Laptop</h4>
+            <h4>Cost:₹50000</h4>
+            <h4>Rating:4.5/5</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              voluptate reiciendis praesentium beatae libero omnis tempore
+              delectus nam, dolorem, molestias, animi perferendis ea quasi eius
+              exercitationem maiores a nesciunt sed.
+            </p>
+          <div class="btn-container">
+            <button>Buy</button>
+            <button>Add card</button>
+          </div>
+          </div>
+          </div>
+        
+      
+        <div id="product-card">
+          <img src="./OIP.webp" alt="" />
+        
+          <div class="product-info">
+            <h4>Name: Laptop</h4>
+            <h4>Cost:₹50000</h4>
+            <h4>Rating:4.5/5</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              voluptate reiciendis praesentium beatae libero omnis tempore
+              delectus nam, dolorem, molestias, animi perferendis ea quasi eius
+              exercitationem maiores a nesciunt sed.
+            </p>
+          <div class="btn-container">
+            <button>Buy</button>
+            <button>Add card</button>
+          </div>
+          </div>
+          </div>
+        
+        <div id="product-card">
+          <img src="./OIP.webp" alt="" />
+        
+          <div class="product-info">
+            <h4>Name: Laptop</h4>
+            <h4>Cost:₹50000</h4>
+            <h4>Rating:4.5/5</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              voluptate reiciendis praesentium beatae libero omnis tempore
+              delectus nam, dolorem, molestias, animi perferendis ea quasi eius
+              exercitationem maiores a nesciunt sed.
+            </p>
+          <div class="btn-container">
+            <button>Buy</button>
+            <button>Add card</button>
+          </div>
+          </div>
+          </div>
+        
+        <div id="product-card">
+          <img src="./OIP.webp" alt="" />
+        
+          <div class="product-info">
+            <h4>Name: Laptop</h4>
+            <h4>Cost:₹50000</h4>
+            <h4>Rating:4.5/5</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              voluptate reiciendis praesentium beatae libero omnis tempore
+              delectus nam, dolorem, molestias, animi perferendis ea quasi eius
+              exercitationem maiores a nesciunt sed.
+            </p>
+          <div class="btn-container">
+            <button>Buy</button>
+            <button>Add card</button>
+          </div>
+          </div>
+          </div>
+        
+        <div id="product-card">
+          <img src="./OIP.webp" alt="" />
+        
+          <div class="product-info">
+            <h4>Name: Laptop</h4>
+            <h4>Cost:₹50000</h4>
+            <h4>Rating:4.5/5</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              voluptate reiciendis praesentium beatae libero omnis tempore
+              delectus nam, dolorem, molestias, animi perferendis ea quasi eius
+              exercitationem maiores a nesciunt sed.
+            </p>
+          <div class="btn-container">
+            <button>Buy</button>
+            <button>Add card</button>
+          </div>
+          </div>
+          </div>
+      
+      </section>
+      
+        <aside>
+        <img src="https://www.liblogo.com/img-logo/yo408f5a5-youtube-logo-free-youtube-logo-icon-symbol-png-svg-download.png" alt="">
+
+        <img src="https://tse2.mm.bing.net/th/id/OIP.a4b551UgIk1gZOPIgmQTGgHaHa?pid=Api&P=0&h=180" alt="">
+
+        <img src="https://static.vecteezy.com/system/resources/previews/016/716/480/original/whatsapp-icon-free-png.png" alt="">
+
+        <img src="https://freelogopng.com/images/all_img/1658588965instagram-logo-png-transparent-background.png" alt="">
+        </aside>
+      
+      </section>
+    </main>
+  </body>
+</html>

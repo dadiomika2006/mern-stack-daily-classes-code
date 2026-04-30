@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 2px solid black;
+            padding: 30px;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input{
+            padding: 10px 0px;
+            width: 400px;
+            border: 1px solid black;
+        }
+        #button-container div{
+            border: 2px solid red;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+
+        }
+        #button-container{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            margin-top: 30px;
+            row-gap: 10px;
+            column-gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <input type="number" readonly placeholder="0">
+        </div>
+        <div id="button-container">
+            <div>sin</div>
+            <div>cos</div>
+            <div>tan</div>
+            <div>AC</div>
+
+            <div>9</div>
+            <div>8</div>
+            <div>7</div>
+            <div></div>
+
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>*</div>
+
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>-</div>
+            
+            <div>=</div>
+            <div>0</div>
+            <div>/</div>
+            <div>+</div>
+        </div>
+    </div>
+</body>
+</html>
