@@ -6,56 +6,64 @@
     <title>Document</title>
     <style>
         tbody tr:nth-child(odd){
-            background-color: brown;
+            background-color: aqua;
         }
-        tbody tr:nth-child(even){
 
-            background-color: rgb(215, 248, 250);
-        }
         body{
             display: flex;
             flex-direction: column;
+            align-content: center;
         }
     </style>
 </head>
 <body>
     <h1>Employee Details</h1>
     <input type="search" placeholder="search employee">
+    <input type="search" placeholder="search employee"><br><br>
     <table border="1" cellpadding="10" cellspacing="0">
         <thead>
-           <tr>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Salary</th>
-            <th>Address</th>
-            <th>Phone No</th>
-           </tr>
-        </thead>
-        <tbody>
-           <tr>
-            <td>ravi</td>
-            <td>developer</td>
-            <td>200000</td>
-            <td>hyd</td>
-            <td>7134567809</td>
-           </tr>
-           <tr>
-            <td>manoj</td>
-            <td>test engineer</td>
-            <td>86200</td>
-            <td>vzg</td>
-            <td>9023456789</td>
-           </tr>
-           <tr>
-            <td>omika</td>
-            <td>developee</td>
-            <td>30000</td>
-            <td>hyd</td>
-            <td>7134567809</td>
-           </tr>
-
+         <tr bgcolor="orange">
+@@ -61,8 +62,42 @@
         </thead>
 
     </table>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet dicta modi natus ea explicabo corporis. Quae accusantium, aliquid enim voluptatum ut sapiente natus praesentium! Non sunt hic adipisci quasi quam.</p>
+    <button onclick="dispara()">click here
+
+    </button>
+    <script>
+        document.querySelectorAll("tbody tr")
+        function dispara(){
+            let para=document.querySelector("p");
+            para.style.display= (para.style.display=="block")? "none" : "block"
+        }
+        let rows=document.querySelectorAll("tbody tr");
+        let input=document.querySelector("input");
+
+        // input.addEventListener('keyup',()=>{
+        //     console.log(input.value);
+        // })
+        // input.onkeyup=()=>{ //when we release key
+        //     console.log(input.value);
+            
+        // }
+        // input.addEventListener('keyup',()=>{
+        //     let Inputtext=input.value.toLowerCase()
+        //     console.log(Inputtext);
+            
+        // })
+        input.addEventListener('keyup',()=>{
+            let Inputtext=input.value.toLowerCase()
+            rows.forEach((row)=>{
+                let rowdata=row.textContent;
+                let res=rowdata.toLocaleLowerCase().includes(Inputtext);
+                row.style.display=res?"":"none"
+                
+
+            })
+        })
+
+            
+
+    </script>
 </body>
-</html>

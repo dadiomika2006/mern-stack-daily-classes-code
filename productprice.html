@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let productPrice=[500,2600,850,950,5000,500,600];
+        console.log(productPrice);
+        //mapping 10% discount
+        let mappedprice=productPrice.map((price)=>{
+           // console.log(price);
+            return price-price/10;
+            
+        })
+        //filter discounted products from1000 to 5000
+        let filteredproducts=mappedprice.filter((price)=>{
+            return price>=1000&& price<=5000;
+        })
+        console.log(mappedprice);
+        console.log(filteredproducts);
+
+        //total sum of mappedprices
+
+        let totalPrice = mappedprice.reduce((price,acc) => {
+            return price+acc;
+         },250)
+         
+        console.log(totalPrice);
+        
+    </script>
+</body>
+</html>

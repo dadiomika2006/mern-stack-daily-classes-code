@@ -212,3 +212,53 @@ Function Types:
          1.Attribute way
          2.property way
          3.add event listener
+
+
+
+LOOPS
+--------
+    ->these are used iterate the statements no of times until condition will become satisfied
+    1.for -> when we know the range
+        syntax: for(initialisation; condition; increment/ decrement){
+
+        }
+    2.while ->
+        syntax: while(condition){
+            increment / decrement
+        }
+    3.do while when we initialisee it does not check condition
+        syntax:do{
+            increment / decrement
+            }while(condtion)       
+    4.for-in ->we can used to iterate arrays and strings
+        ->it is used to fetch only indexes
+        syntax:
+        for(variable in string / array){
+
+        }
+    5.for-of
+        ->we can used to iterate arrays and strings
+        ->it is used to fetch only values
+        syntax:
+        for(variable of string / array){
+
+        }
+    6.for each
+        ->we can used to iterate arrays 
+        ->higher order function
+        syntax: array.forEach((value,index,array)=>{
+
+        })
+        arr.forEach((_,i,a))//if dont want values
+
+ARRAY INBUILT METHODS:
+-----------------
+        1.map()
+                ->higher order function
+                ->can form new array
+        2.filter()
+                ->higheer orderfunction
+
+
+    spread operators: Es 6
+    --------------------
