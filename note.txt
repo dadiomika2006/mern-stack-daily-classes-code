@@ -1,0 +1,85 @@
+React Js:
+---------
+->react js is  the small js library 
+
+Features:
+-> react js is component based
+->it supports virtual DOM
+->using react js we can built (SPA) single page of application
+->it will follow defining algorithm
+
+Library:
+--------
+->collection of code is called library
+->Ex: node.js, jQuery, anime js...etc
+
+FRameworks:
+-----------
+->collection of libraries is called as fameworks
+->Ex: Angular js, next js, Express js, Electron js, Vue js
+
+JSX(Javascript and xml[extendable markup language]):
+----------------------------------------------------
+->react will understand JSX code but browsers will not understand JSX code,it understands only js code (because every browser having Js engine)
+->to convert JSX code to js we have next generation compiler called "babel JS"
+
+-> JSX is similar to HTML , here it allows both JS and HTML code
+
+Rules:
+-------
+        jsx files always starts with captial letters
+        here we can achieve js expression
+        In return function html elements contains parentTag
+        jsx will allow empty(<> </>)
+
+Components:
+-----------
+    -> they are the smalllest UI blocks 
+    called as a Components type, they are:
+
+    types:
+    ------
+    1.Class based component(CBC): 
+    ----------------------------
+        ->components are declared using class keyword
+        ->In CBC constructors ,super keywords,this keywords is present also render(),and life cycle method are present
+        ->In CBC states are present so, it is called STATED COMPONENTS
+         Syntax:
+            import {Component} from 'react';
+            class Classname extends Components{
+                render(){
+                return(
+                    html code
+                    )
+                }
+            }
+
+            export default Component;
+
+    2.Function based component(FBC):
+    --------------------------------
+        ->we can FBC using arrow functions or normal functions or functional expression
+        ->in FBC constructors,  keyword, this keyword not present
+        ->in fbc states are not present which is why it is called STATELESS COMPONENTS
+        Sntax
+            1.const ComponentName=()=>{-------------> using arrow function
+                return(
+                    html code here....
+                )
+            }
+            export default ComponentName;
+
+            2.function ComponentName(){
+                return(
+                    html code here------------------->normal function
+                )
+
+            }
+
+
+            3.const ComponentName=function(){
+                return(
+                    html code here-------------------->Functional 
+                )
+                
+            }
