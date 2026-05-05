@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: aliceblue;
+            font-family: Arial, Helvetica, sans-serif;
+            
+        }
+        form{
+            background-color:antiquewhite;
+            align-items: center;
+            width: 350px;
+            padding: 10px;
+            border: 2px solid ;
+            border-radius: 8px;  
+        }
+        h1{
+            color:brown;
+            font-style:oblique;
+            text-align: center;
+            margin-top: 0;
+        }
+        label{
+            width: 120px;
+        }
+        input{
+            width: 150px;
+            padding: 4px;
+        }
+         .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  button {
+    padding: 5px 15px;
+    margin: 0 5px;
+    cursor: pointer; 
+  }
+    </style>
+</head>
+<body>
+    <form action="">
+        <div>
+            <h1>Registration Form</h1>
+             <div class="form-group">
+            <label for="">Username:</label>
+            <input type="text" id="username" placeholder="username" required><br><br></div>
+             <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" id="password" placeholder="password" required><br><br></div>
+             <div class="form-group">
+            <label for="">Email ID</label>
+            <input type="email" id="email" placeholder="email" required><br><br></div>
+             <div class="form-group">
+            <label for="">Phone Number</label>
+            <input type="tel" id="phone" maxlength="10" placeholder="+91" required><br><br></div>
+            <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Cancel</button></div>
+      </fieldset>
+    </form>
+    <script>
+        let uName = document.getElementById("username");
+        let psw = document.getElementById("password");
+        let form = document.querySelector("form");
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault()
+            console.log("username: ", uName.value);
+            console.log("password: ", psw.value);
+            window.localStorage.setItem("username", uName.value);
+            window.localStorage.setItem("password", psw.value);
+           
+
+            alert("Registered successfully!");
+            window.location.href = "loginpage.html";
+
+
+            let storedUserName=localStorage.getItem("username");
+            let storedPassword=localStorage.getItem("password");
+            console.log("Stored UserName:" + storedUserName);
+            console.log("Stored Password:" + storedPassword);
+
+        });
+    </script>
+</body>
+</html>

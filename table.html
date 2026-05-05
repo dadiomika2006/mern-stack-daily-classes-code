@@ -1,100 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Example</title>
+    <title>Document</title>
 </head>
-
-<body>
-
-    <h1 align="center">IBM Employee Details</h1>
-    <table align="center" border="1" cellspacing="0" cellpadding="10">
-        <colgroup>
-            <col span="2" bgcolor="gree">
-            <col span="1" bgcolor="magenta">
-            <col span="2" bgcolor="powderblue">
-        </colgroup>
-        <thead>
-            <tr bgcolor="yellow">
-                <th>ID</th>
-                <th>Name</th>
-                <th>Salary</th>
-                <th>Role</th>
-                <th>Address</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>E100</td>
-                <td>Ravi</td>
-                <td>500000</td>
-                <td rowspan="2">Developer</td>
-                <td>Vizag</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>E200</td>
-                <td>Sai</td>
-                <td>900000</td>
-                <td>Bangalore</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-
-                </td>
-            </tr>
-            <tr>
-                <td>E300</td>
-                <td>Vivek Ayan</td>
-                <td>120000</td>
-                <td>MERN Developer</td>
-                <td>Kochi</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                    
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td align="center" bgcolor="red" colspan="6">2026 &COPY; copyright</td>
-            </tr>
-        </tfoot>
-    </table>
+<body id="body">
+    <script>
 
 
 
-
-    <br><br>
-
-    <hr>
-
-    <table border="5" cellspacing="0" cellpadding="10" align="center" bgcolor="salmon">
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-        </tr>
-    </table>
+        let b1=document.getElementById("body")
 
 
+        let t1=document.createElement("table")        
+        let tr1=document.createElement("tr")        
+        let tr2=document.createElement("tr")        
+        let td1=document.createElement("td")        
+        let td2=document.createElement("td")        
+        let td3=document.createElement("td")        
+
+        let td4=document.createElement("td")        
+         t1.appendChild(tr1)
+         t1.appendChild(tr2)
+         tr1.appendChild(td1)
+         tr1.appendChild(td2)
+         tr2.appendChild(td3)
+         tr2.appendChild(td4)
+         td1.innerHTML="<img src='https://th.bing.com/th/id/OIP.yz3X9w5xAdPkf9PNDbQMXQHaJ_?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3' width='100'>"
+                  
+         td2.innerHTML="<h1>hello<h1>"         
+         td3.innerText="102"         
+         td4.innerText="103"  
+
+         t1.border=1
+         t1.cellPadding=10
+         t1.cellSpacing=0
+        b1.appendChild(t1)
+        console.log(t1);
+
+        tr1.removeChild(td2)
+    </script>
 </body>
-
 </html>

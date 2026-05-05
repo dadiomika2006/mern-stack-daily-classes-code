@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f0f0;
+      font-family: Arial;
+    }
+    .loginbox {
+      background: #fce5cd;
+      padding: 30px 40px;
+      border: 3px solid #8B0000;
+      border-radius: 12px;
+      width: 350px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+     h1 { 
+        color: #8B0000; 
+        text-align: center; 
+        margin: 0 0 25px 0;
+    }
+     .form-group{
+         display: flex; 
+         justify-content: space-between;
+         margin-bottom: 15px;
+         align-items: center;
+        
+    }
+    label { 
+        width: 120px; 
+    }
+    input {
+         width: 160px; 
+         padding: 6px; 
+         border: 1px solid #999; 
+         border-radius: 4px; 
+    }
+    button { 
+        padding: 6px 20px;
+        margin: 0 5px; 
+        cursor: pointer; 
+    }
+    .buttons {
+    text-align: center;
+    margin-top: 20px;
+   }
+    </style>
+</head>
+<body>
+    <form action="" class="loginbox">
+        <div>
+            <h1>Login Form</h1>
+             <div class="form-group">
+            <label for="">Username:</label>
+            <input type="text" id="username" placeholder="username" required><br><br></div>
+             <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" id="password" placeholder="password" required><br><br></div>
+            <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Cancel</button></div>
+    </form>
+    <script>
+       
+        let form = document.querySelector("form");
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault()
+
+            
+            let enterUserName=document.getElementById("username").value.trim();
+            let enterPassword=document.getElementById("password").value.trim();
+
+            let storedUserName=localStorage.getItem("username");
+            let storedPassword=localStorage.getItem("password");
+
+            if(storedUserName==enterUserName && storedPassword==enterPassword){
+                alert("LOGIN SUCCESSFULLY");
+                window.location.href = "homepage.html";
+            }
+            else{
+                alert("INVALID");
+            }
+        });
+    </script>
+    
+</body>
+</html>

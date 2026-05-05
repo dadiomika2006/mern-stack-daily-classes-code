@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tbody tr:nth-child(odd){
+            background-color: brown;
+        }
+        tbody tr:nth-child(even){
+
+            background-color: rgb(215, 248, 250);
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Details</h1>
+    <input type="search" placeholder="search employee">
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+           <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Salary</th>
+            <th>Address</th>
+            <th>Phone No</th>
+           </tr>
+        </thead>
+        <tbody>
+           <tr>
+            <td>ravi</td>
+            <td>developer</td>
+            <td>200000</td>
+            <td>hyd</td>
+            <td>7134567809</td>
+           </tr>
+           <tr>
+            <td>manoj</td>
+            <td>test engineer</td>
+            <td>86200</td>
+            <td>vzg</td>
+            <td>9023456789</td>
+           </tr>
+           <tr>
+            <td>omika</td>
+            <td>developee</td>
+            <td>30000</td>
+            <td>hyd</td>
+            <td>7134567809</td>
+           </tr>
+
+        </thead>
+
+    </table>
+</body>
+</html>
