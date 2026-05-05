@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 100px;
+            width: 100px;
+            border-radius: 10px;
+        }
+        div{
+            background-color: mediumorchid;
+            padding: 10px;
+            margin: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        div:nth-child(odd){
+            background-color:palevioletred;
+
+        } 
+        ol{
+            list-style:none;
+        }
+        span{
+            font-weight: bold;
+            font-size: 19px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let apiUrl = "https://api.github.com/users";
+        let body=document.querySelector("body")
+        //logic to fetch dumi api data
+        fetch(apiUrl).then((res) => res.json()).then((users) => {
+            users.forEach((u) => {
+                let div =document.createElement("div");
+                let image=document.createElement("img");
+                let orderList=document.createElement("ol")
+                let li1=document.createElement("li")
+                let li2=document.createElement("li")
+                let li3=document.createElement("li")
+                div.appendChild(image)
+                div.appendChild(orderList)
+                orderList.appendChild(li1);
+                orderList.appendChild(li2);
+                orderList.appendChild(li3);
+                body.appendChild(div);
+                image.src=`${u.avatar_url}`
+
+                li1.innerHTML=`<span>Username:</span> ${u.login}`
+                li2.innerHTML=`<span>ID:</span> ${u.id}`
+                li3.innerHTML=`<span> Profile Type: </span> ${u.user_view_type}`
+            });
+        }).catch((err) => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

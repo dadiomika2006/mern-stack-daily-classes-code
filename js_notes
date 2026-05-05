@@ -262,3 +262,55 @@ ARRAY INBUILT METHODS:
 
     spread operators: Es 6
     --------------------
+
+    ->  Array   
+    -> objects 
+
+JSON(javascript object notation) : 
+----------------------------------
+    ->JSON is similar to javascript Object 
+    Ex: 
+       [ {
+            'name':'ravi',
+            'rollNo':500,
+            'active':true
+        },{
+            'name':'rani',
+            'rollNo':520,
+            'active':true
+        }
+        ]
+
+
+
+Asynchronous Javascript : 
+-------------------------
+    ->
+
+
+Type Casting : 
+--------------
+    ->Converting one type of data into another type 
+    ->types 
+        1. internal/ implicit type casting  
+            ->JS engin will Convert one type to another data type internally 
+        2. External/ explicit type casting 
+            ->programmer's or users Converting one type to another data type forcefully 
+
+
+
+
+Time Intervals : 
+----------------
+    1. setTimeout() 
+    2. setIntervals()
+
+        ->This both functions are higher order functions 
+
+
+
+Promises : 
+----------
+    ->Promises in Javascript is the object used to handle evualtial completion(or failed) of the results 
+
+    ->          
