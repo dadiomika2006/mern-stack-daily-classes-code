@@ -1,0 +1,31 @@
+#productcontainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: palevioletred;
+    margin: 10px;
+    padding: 20px;
+
+
+}
+#productcontainer img{
+    height: 250px;
+    width: 150px;
+    border-radius: 10px;
+}
+#main_container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+h4{
+    margin-left: 20px;
+}
+button{
+    padding: 10px 20px;
+    background-color: orange;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: none;
+}
