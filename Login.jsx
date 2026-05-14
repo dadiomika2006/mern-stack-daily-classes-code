@@ -1,122 +1,164 @@
-import React from 'react'
-import { Button, Form } from 'react-bootstrap'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import emailjs from '@emailjs/browser';
+import React, { useState } from "react";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import emailjs from "@emailjs/browser";
+import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-
-export const Login = () => {
-  const [loginDetails, setLoginDetails] = React.useState({
+const Login = () => {
+  const [loginDetails, setLoginDetails] = useState({
     username: "",
     password: "",
-    otp: ""
+    otp: "",
   });
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log(loginDetails);
-  };
+  const navigate = useNavigate();
+  const [mailOtp, setMailOtp] = useState("");
 
+  // Function to fetch input values
   const handleChange = (e) => {
     setLoginDetails({ ...loginDetails, [e.target.name]: e.target.value });
   };
 
+  // Form reset function
   const handleReset = () => {
     setLoginDetails({
       username: "",
       password: "",
-      otp: ""
+      otp: "",
     });
+    setMailOtp("");
   };
 
- const generateOtp = () => {
-  try{
-    let generatedOtp = Math.floor(100000 + Math.random() * 900000);
-    let time = new Date();
-    time.setMinutes(time.getMinutes() + 15);
-    
-    let expiredTime = `${time.getHours()}:${time.getMinutes()}:00`;
-    let formData= {
+  // Function to generate otp and send to mail
+  const generateOtp = async () => {
+    try {
+      if (!loginDetails.username) {
+        return toast.warn("Please enter your email first");
+      }
+
+      let generatedOtp = Math.floor(100000 + Math.random() * 900000); // 6 digit OTP
+      let time = new Date();
+      // Simple logic for expiration time display
+      let expiredTime = `${time.getHours()}:${time.getMinutes() + 15}:00`;
+      setMailOtp(generatedOtp);
+
+      let formData = {
         email: loginDetails.username,
-        time: expiredTime,
         otp: generatedOtp,
+        time: expiredTime,
+      };
+
+      // Fixed the syntax error here: removed duplicate/unclosed call
+      await emailjs.send(
+        "service_9l1dihp", 
+        "template_7bth6c8", 
+        formData, 
+        { publicKey: "N3xga7GAtw352Ac-q" }
+      );
+
+      toast.success("OTP sent to your mail successfully");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to generate OTP");
     }
-    await emailjs.send(
-      "service_0zqil2g",
-      "template_ga8m4ia",
-      formData,
-      {publicKey:"veb7MZkI_fgbqt2nT"}
-    );
+  };
 
-    toast.success("otp is send to your mail successfully")
-
-    console.log("OTP Sent:", generatedOtp);
-  } catch (err) {
-    console.log(err);
-    toast.error("failed  to generate otp")
-  }
-};
-
+  // Function to handle form submit
+  const handleLogin = (e) => {
+    e.preventDefault();
+    try {
+      // Fixed the syntax error: merged the duplicate 'if' statements
+      if (
+        mailOtp !== "" &&
+        mailOtp.toString() === loginDetails.otp.toString() &&
+        loginDetails.password !== ""
+      ) {
+        toast.success("Login successful");
+        localStorage.setItem("token", "241sadgghs3546adDh");
+        setTimeout(() => {
+          navigate("/home");
+        }, 3000);
+      } else if (mailOtp.toString() !== loginDetails.otp.toString()) {
+        toast.warn("Invalid OTP");
+      } else {
+        toast.error("Failed to login. Please check your password.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
-    <div id="form-container">
+    <div id="form-container" className="container mt-5">
       <Form onSubmit={handleLogin}>
-
-        <Row>
-          <Form.Group>
+        <Row className="mb-3">
+          <Form.Group as={Col}>
             <Form.Label>Username:</Form.Label>
             <Form.Control
               type="email"
-              placeholder="Enter your email"
+              placeholder="Enter email"
               name="username"
               onChange={handleChange}
               value={loginDetails.username}
+              required
             />
           </Form.Group>
         </Row>
-
-        <Row>
-          <Form.Group>
+        <Row className="mb-3">
+          <Form.Group as={Col}>
             <Form.Label>Password:</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Enter your password"
               name="password"
+              placeholder="Enter password"
               onChange={handleChange}
               value={loginDetails.password}
+              required
             />
           </Form.Group>
         </Row>
-
-        <Row className="my-2">
-          <Col className="my-2">
-            <Button type="button" className="btn btn-info" onClick={generateOtp}>
+        <Row className="my-2 align-items-end">
+          <Col>
+            <Button
+              type="button"
+              onClick={generateOtp}
+              variant="info"
+              className="w-100"
+            >
               Generate OTP
             </Button>
           </Col>
-          <Col className="my-2">
+          <Col>
             <Form.Control
               type="number"
               name="otp"
               placeholder="Enter OTP"
               onChange={handleChange}
               value={loginDetails.otp}
-              className="no-spinner"
-              
             />
           </Col>
         </Row>
-
-        <Row className="my-2">
-          <Col><Button type="submit">Sign In</Button></Col>
+        {/* Button row */}
+        <Row className="my-3">
           <Col>
-            <Button className="btn btn-warning" type="button" onClick={handleReset}>
+            <Button type="submit" variant="primary" className="w-100">
+              SignIn
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              onClick={handleReset}
+              type="button"
+              variant="warning"
+              className="w-100"
+            >
               Reset
             </Button>
           </Col>
         </Row>
-
       </Form>
+
+      <ToastContainer />
     </div>
   );
 };

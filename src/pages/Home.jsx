@@ -4,9 +4,7 @@ const Home = () => {
   return (
     <>
       <div>Home Page</div>
-      <h1 className='text-center'>
-        home page
-      </h1>
+      <h1>Welcome to the Site</h1>
     </>
   );
 };
