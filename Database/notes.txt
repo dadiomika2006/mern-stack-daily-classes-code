@@ -1,0 +1,228 @@
+Database : 
+----------
+    ->place where we can store data is called as a database 
+
+Types of Data : 
+---------------
+    1. Structure Data 
+                ->Sql , Mysql , postgres SQL, SQL Server ..etc
+
+    2. semi-Structure 
+                ->NoSql database 
+                    Ex:    1. MongoDB- Document format
+                           2. Cassandra - column-family  
+                           3. Hbase    - column-family 
+                           4. Neo4J     -nodes 
+                           5. Raik      -key-value pair  
+
+    3. unStructure 
+        ->
+
+MongoDB : 
+---------
+    ->MongoDB is the NoSQL used to store data in form of Document formate
+
+
+    Database: 
+        syntax : use databaseName
+
+Collection : 
+------------
+    ->Collection is the group of documents in MongoDB 
+    ->syntax : 
+            db.createCollection('collectionName')
+
+Document : 
+----------
+    ->Document(JSON/BSON) contains group fields 
+
+
+    ->Insert Document 
+        1. syntax 
+                    db.collectionName.insertOne(document)
+
+        2.syntax 
+                    db.collectionName.insertMany([document1, document2,...])
+
+
+DataTypes: 
+----------
+    1. string 
+    2. number 
+    3. boolean 
+    4. array
+    5. object 
+    6. date 
+    7. time 
+    8. function 
+    9. null 
+   
+
+
+Retrieve Documents /data: 
+-------------------------
+    1. findOne()  ->used to Retrieve one document at a time
+            syntax: 
+                db.collectionName.findOne({filter condition}, {projection query})
+
+
+                projections : 
+                        ->projections are used to Retrieve required fields 
+                        ->to display fields pass value ->1    (_id: 1)
+                        ->if don't want to display value ->0   (fields:0)
+
+
+                1. WAQT Retrieve studentDetails who's age 23 in the department "IT"
+                2. WAQT Retrieve only student name who's age 23 in the department "IT"
+                3. WAQT Retrieve display student name , attendance, maths marks who's attendance having more than 60
+
+
+
+
+    2. find()      ->used to Retrieve multiple document at a time
+
+
+
+
+
+Update Document Fields : 
+-----------------------
+    1. updateOne() 
+        ->updateOne() is used to Update single document at a time 
+
+            syntax : 
+                    db.collectionName.updateOne({filter condition},{updated query})
+
+    2. updateMany()
+        ->updateMany() is used to Update Multiple documents at a time 
+            syntax : 
+                    db.collectionName.updateMany({filter condition},{updated query})
+
+
+    operators: 
+        1.$set 
+        2.$unset
+        3.$inc 
+        4.$rename 
+        5.$pop
+        6.$push 
+        7.$pull
+
+
+Relational operators: 
+---------------------
+    1.eq
+    2.neq 
+    3.gt 
+    4.lt 
+    5.gte
+    6.lte
+
+
+    Logical operators : 
+    -----------------
+        1. $and 
+        2. $or 
+        3. $not 
+
+Delete Operations : 
+----------------------
+    1. deleteOne()
+    2. deleteMany()
+    3. remove()( legacy function)
+        ->this functions are used to delete documents 
+
+
+        syntax : 
+            db.collectionName.deleteOne({filter condition})
+            db.collectionName.deleteMany({filter condition})
+            db.collectionName.remove({filter condition})
+
+
+    4. WAQT delete student Details who's age grater than equal to 23
+    using remove function
+
+
+
+1. count()      
+    ->WAQT display count of the students who's attendance >= 75 and <=90
+
+2. sort()
+3. skip()
+4. limit()
+
+
+
+db.collectionName.find().count()
+db.collectionName.find().sort({field:value})
+db.collectionName.find().skip(number)
+db.collectionName.find().limit(number)
+
+Aggregate Functions(Aggregate Pipelines) : 
+------------------------------------------
+        ->  Aggregate functions are used to perform operations on stage by stage
+
+        syntax: 
+                db.collectionName.aggregate({filter condition})
+
+                db.collectionName.aggregate([
+                    {stage 1},
+                    {stage 2},
+                    ..
+                ])
+ aggregate operators: 
+    1. $match
+    2. $group 
+    3. $min 
+    4. $max 
+    5. $avg 
+    6. $sum 
+    7. $lookup  -> (To perform join in MongoDB) 
+    8. $unwind  ->creates new documents 
+    9. $project 
+    10. $sort
+    11. $limit 
+    12. $out 
+    13. $count 
+    14. $skip 
+
+
+1.WAQT display the employee Details who's experience 8 years ,in the department Operations and salary more the 50000
+
+
+2. WAQT display maximum salary in each department 
+3. WAQT display maximum salary, minimum salary , total salary in each department 
+
+4. WAQT display max salary, min salary , total salary in each job role(job title) who's having more than 6 experience_years
+
+5. WAQT display employee name and skill who having skill "Java" or "C++"
+
+
+
+
+Index: 
+------
+    1. createIndex({filedName:1})  
+        -> 1 ascending order ,0 descending order 
+
+       syntax : 
+                 db.collectionName.createIndex({filedName:1})
+
+                 db.collectionName.getIndexes()
+
+                 db.collectionName.dropIndex(indexName) 
+
+db.Employee_Details.aggregate(
+  [{$match:{age:{$gt:32}}},
+  {$sort:{age:1}},
+  {$project:{name:1,age:1,_id:0}},
+  {$limit:3}
+  ]
+            )
+
+
+db.Employee_Details.aggregate(
+  {$match:{$and:[{department:"Marketing"},{job_title:"Data Analyst"}]
+          }
+  }
+  )
