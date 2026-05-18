@@ -1,27 +1,18 @@
-const {display,test,name}=require("./model");
-console.log("This is server.js file");
-display();
+const express = require("express");
+const app = express();
+const PORT = 4000;
+const connection=require("./config/db");
+app.use(express.json());//middleware
+connection();
 
 
-const testResult=test()
-console.log(testResult);
-console.log(name);
+const studentRouter=require("./routes/studentRouter")
+const collegeRouter=require("./routes/collegeRouter")
 
-console.log("----------------------------")
+app.use("/students",studentRouter);
+app.use("/colleges",collegeRouter);
 
-const {displayUser,postUsers, deleteUser,updateName, displayUserBasedEmail}=require("./store/UserStorage");
-console.log("before post user:", displayUser())
-
-postUsers({name:"ravi", email:"ravi@gmail.com"})
-postUsers({name:"sai", email:"sai@gmail.com"})
-postUsers({name:"raju", email:"raju@gmail.com"})
-
-console.log("after post user details ", displayUser())
-
-
-deleteUser("sai")
-console.log("after deleting user:", displayUser());
-
-console.log("Email:ravi@gmail.com", displayUserBasedEmail('ravi@gmail.com'))
-
-updateName("RaviKumar","ravi@gmail.com")
+app.listen(PORT,()=>{
+    console.log("server running on port",PORT);
+    
+})

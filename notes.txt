@@ -1,7 +1,175 @@
-const path=require("path")
-console.log(path.dirname("C:\Users\HP\Desktop\MERN stack\NodeJS\notes.txt"));
+const express = require("express");
 
-console.log(path.basename("C:\\Users\\HP\\Desktop\\MERN stack\\NodeJS\\notes.txt"));
+const app = express();
+const PORT = 4000;
 
-console.log(path.extname("C:\\Users\\HP\\Desktop\\MERN stack\\NodeJS\\notes.txt"));
+// Middleware
+app.use(express.json());
 
+// Array to store student data
+let studentDetails = [];
+
+// POST API
+app.post("/add-student", (req, res) => {
+
+    const newStudent = {
+        stdName: req.body.name,
+        stdRollno: req.body.rollno,
+        stdBranch: req.body.branch,
+        stdSkills: req.body.skills
+    };
+
+    studentDetails.push(newStudent);
+
+    res.status(200).json({
+        message: "Student added successfully",
+        newStudent
+    });
+});
+
+// GET Home API
+app.get("/", (req, res) => {
+    res.status(200).send("Server running successfully");
+});
+
+// Students API
+app.get("/get-students", (req, res) => {
+
+    res.status(200).json({
+        students: studentDetails
+    });
+
+});
+
+//all students
+app.post("/add-multiplestudents",(req ,res) =>
+{
+   res.status(200).json({
+    message:"all students added successfully"
+   })
+})
+
+// //add muiltiple students at a time
+// app.post("/add-multiple-students", (req, res) => {
+
+//     const students = req.body.allStudents;
+
+//     students.forEach((student) => {
+
+//         const newStudent = {
+//             stdName: student.name,
+//             stdRollno: student.rollno,
+//             stdBranch: student.branch,
+//             stdSkills: student.skills
+//         };
+
+//         studentDetails.push(newStudent);
+//     });
+
+//     res.status(200).json({
+//         message: "Multiple students added successfully",
+//         students: studentDetails
+//     });
+
+// });
+
+// // College Details Data
+// let collegeDetails = [
+//     {
+//         collegeName: "ABC Engineering College",
+//         location: "Hyderabad",
+//         branches: ["CSE", "ECE", "EEE"]
+//     },
+//     {
+//         collegeName: "XYZ Institute of Technology",
+//         location: "Vizag",
+//         branches: ["CSE", "MECH", "CIVIL"]
+//     }
+// ];
+
+// // GET API for College Details
+// app.get("/get-college-details", (req, res) => {
+
+//     res.status(200).json({
+//         message: "College details fetched successfully",
+//         colleges: collegeDetails
+//     });
+
+// });
+
+// Array to store college details
+let collegeDetails = [];
+
+// POST API
+app.post("/add-college-details", (req, res) => {
+
+    const newCollege = {
+        collegeName: req.body.collegeName,
+        location: req.body.location,
+        branches: req.body.branches
+    };
+
+    collegeDetails.push(newCollege);
+
+    res.status(200).json({
+        message: "College details added successfully",
+        college: newCollege
+    });
+
+});
+
+// GET API
+app.get("/get-college-details", (req, res) => {
+
+    res.status(200).json({
+        colleges: collegeDetails
+    });
+
+});
+
+// Add multiple colleges
+app.post("/add-multiplecolleges", (req, res) => {
+
+    const allColleges = req.body.allColleges;
+
+    const formattedColleges = allColleges.map(college => ({
+        collegename: college.name,
+        collegecode: college.code,
+        collegecity: college.city,
+        collegebranches: college.branches
+    }));
+
+    collegeDetails.push(...formattedColleges);
+
+    res.status(200).json({
+        message: "all colleges added successfully"
+    });
+
+});
+
+// Server
+app.listen(PORT,()=>{
+    console.log("server running on port",PORT);
+    
+})
+
+// app.get("/getusers",(req,res)=>{
+// res.status(200).json({name:"ravi",role:"developer",email:"ravi@gamil.com",phone:"123456789"});
+// });
+
+
+
+setTimeout(()=>{
+    console.log("hello");
+    
+});
+function addition(){
+    console.log("Addition");
+    
+}
+addition()
+
+setTimeout(()=>{
+    console.log("2nd time out");
+    
+})
