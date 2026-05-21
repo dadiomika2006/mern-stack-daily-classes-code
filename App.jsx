@@ -1,46 +1,70 @@
-import React from 'react'
-import Factorial from './Factorial'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Dashboard from "./pages/Dashboard";
+import NavBar from "./components/NavBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/style.css";
+import LandingPage from "./pages/LandingPage";
+import CartPage from "./pages/CartPage";
+import CartProvider from "./service/CartProvider";
+import ErrorPage from "./pages/ErrorPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import ViewUsers from "./pages/ViewUsers";
 
 const App = () => {
-  return (
-    <>
-    
-    <Factorial/>
-    
-    <div className="bg-[url(https://c4.wallpaperflare.com/wallpaper/109/839/817/3-316-16-9-aspect-ratio-s-sfw-wallpaper-preview.jpg)]
-         bg-no-bg-no-repeat w-100% bg-cover h-170 p-5 flex flex-col justify-center items-center ">
-          <h1 className="w-100 text-center font-bold bg-green-400 m-3 
-          p-5 italic text-2xl underline decoration-red-500 decoration-2 decoration-wavy rounded-4xl shadow-2xl shadow-red-400">
-              Sample Project
-          </h1>
-          <h2 className="backdrop-blur-2sl w-50% text-center text-2xl 
-          font-bold shadow-2xl shadow-amber-500 rounded-2xl
-           text-white hover:bg-blue-400 ">Welcome to Tailwind</h2>
-    
-          <div className="bg-white p-10 rounded-3xl grid grid-cols-4 gap-x-2 gap-y-2">
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>
-              <div className="bg-red-400 h-10 w-30 rounded-2xl shadow-2xs
-               shadow-black"></div>        
-          </div>   
-          </div></>
-  )  
-}
 
-export default App
+
+  return (
+    <BrowserRouter>
+      <CartProvider>
+        <NavBar />
+        <Routes>
+          <Route path="" element={<LandingPage />} />
+          <Route
+            path="cart"
+            element={
+              <ProtectedRoute authenticated={true}>
+                <CartPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </CartProvider>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute authenticated={true}>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="products"
+          element={
+            <ProtectedRoute authenticated={true}>
+              <Products />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="dashboard"
+          element={
+            <ProtectedRoute authenticated={true}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<ErrorPage />} />
+
+        <Route path="view-users" element={<ViewUsers/>}/>
+      </Routes>
+    </BrowserRouter>
+  );
+};
+export default App;

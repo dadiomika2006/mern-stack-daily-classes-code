@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { toast, ToastContainer } from "react-toastify";
-
+import axios from "axios";
 function Register() {
   const [details, setDetails] = useState({
     name: "",
@@ -22,11 +22,18 @@ function Register() {
     setDetails({ ...details, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(details);
-    toast.success("register successfully 😊");
-    
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await axios.post(
+        "http://localhost:5000/user/register",
+        details,
+      );
+      console.log(response);
+      toast.success("register successfully 😊");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -68,21 +75,14 @@ function Register() {
               placeholder="Enter email"
             />
           </Form.Group>
-          </Row>
-            <Row className="mb-3">
+
           <Form.Group as={Col} controlId="formGridUserType">
-            <Form.Label>UserType</Form.Label>
-            <Form.Select
-            onChange={handleChange}
-              name="userType"
-              required
-              defaultValue=""
-            >
-              <option value="" disabled>Choose User Type</option>
+            <Form.Label>User Type</Form.Label>
+            <Form.Select name="userType" onChange={handleChange}>
+              <option>Choose User Type</option>
               <option value="user">User</option>
               <option value="admin">Admin</option>
             </Form.Select>
-            
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
@@ -153,6 +153,7 @@ function Register() {
       </Form>
       <ToastContainer />
     </div>
-  );}
+  );
+}
 
 export default Register;

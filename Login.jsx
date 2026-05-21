@@ -3,42 +3,36 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const Login = () => {
-  const [loginDetails, setLoginDetails] = useState({
+  const [loginDetails, setLoginDetails] = React.useState({
     username: "",
     password: "",
     otp: "",
   });
 
   const navigate = useNavigate();
-  const [mailOtp, setMailOtp] = useState("");
+  let [mailOtp, setMailOtp] = useState(0);
 
-  // Function to fetch input values
+  //function to fetch input values
   const handleChange = (e) => {
     setLoginDetails({ ...loginDetails, [e.target.name]: e.target.value });
   };
 
-  // Form reset function
+  // form reset function
   const handleReset = () => {
     setLoginDetails({
       username: "",
       password: "",
       otp: "",
     });
-    setMailOtp("");
   };
 
-  // Function to generate otp and send to mail
+  //function to generate otp and send to mail
   const generateOtp = async () => {
     try {
-      if (!loginDetails.username) {
-        return toast.warn("Please enter your email first");
-      }
-
-      let generatedOtp = Math.floor(100000 + Math.random() * 900000); // 6 digit OTP
+      let generatedOtp = Math.floor(Math.random() * 1000000);
       let time = new Date();
-      // Simple logic for expiration time display
       let expiredTime = `${time.getHours()}:${time.getMinutes() + 15}:00`;
       setMailOtp(generatedOtp);
 
@@ -47,52 +41,51 @@ const Login = () => {
         otp: generatedOtp,
         time: expiredTime,
       };
+      await emailjs.send("service_9l1dihp", "template_7bth6c8", formData, {
+        publicKey: "N3xga7GAtw352Ac-q",
+      });
 
-      // Fixed the syntax error here: removed duplicate/unclosed call
-      await emailjs.send(
-        "service_9l1dihp", 
-        "template_7bth6c8", 
-        formData, 
-        { publicKey: "N3xga7GAtw352Ac-q" }
-      );
-
-      toast.success("OTP sent to your mail successfully");
+      toast.success("otp send to ur mail successfully");
     } catch (err) {
-      console.error(err);
-      toast.error("Failed to generate OTP");
+      console.log(err);
+      toast.error("failed to generate otp");
     }
   };
 
-  // Function to handle form submit
-  const handleLogin = (e) => {
-    e.preventDefault();
+  //function to handle form submit
+  const handleLogin = async (e) => {
     try {
-      // Fixed the syntax error: merged the duplicate 'if' statements
-      if (
-        mailOtp !== "" &&
-        mailOtp.toString() === loginDetails.otp.toString() &&
-        loginDetails.password !== ""
-      ) {
-        toast.success("Login successful");
-        localStorage.setItem("token", "241sadgghs3546adDh");
-        setTimeout(() => {
-          navigate("/home");
-        }, 3000);
-      } else if (mailOtp.toString() !== loginDetails.otp.toString()) {
-        toast.warn("Invalid OTP");
-      } else {
-        toast.error("Failed to login. Please check your password.");
-      }
+      e.preventDefault();
+      // if (
+      //   mailOtp != "" &&
+      //   mailOtp == loginDetails.otp &&
+      //   loginDetails.password != ""
+      // ) {
+      const response = await axios.post("http://localhost:5000/user/login", {
+        username: loginDetails.username,
+        password: loginDetails.password,
+      });
+      toast.success("login successful");
+
+      localStorage.setItem("token", response.data.token);
+      setTimeout(() => {
+        navigate("/home");
+      }, 3000);
+      // } else if (mailOtp != loginDetails.otp) {
+      // toast.warn("invalid otp");
+      // } else {
+      // toast.error("failed to login");
+      // }
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
 
   return (
-    <div id="form-container" className="container mt-5">
+    <div id="form-container">
       <Form onSubmit={handleLogin}>
-        <Row className="mb-3">
-          <Form.Group as={Col}>
+        <Row>
+          <Form.Group>
             <Form.Label>Username:</Form.Label>
             <Form.Control
               type="email"
@@ -100,30 +93,27 @@ const Login = () => {
               name="username"
               onChange={handleChange}
               value={loginDetails.username}
-              required
             />
           </Form.Group>
         </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col}>
-            <Form.Label>Password:</Form.Label>
+        <Row>
+          <Form.Group>
+            <Form.Label>Password :</Form.Label>
             <Form.Control
               type="password"
               name="password"
               placeholder="Enter password"
               onChange={handleChange}
               value={loginDetails.password}
-              required
             />
           </Form.Group>
         </Row>
-        <Row className="my-2 align-items-end">
+        <Row className="my-2">
           <Col>
             <Button
               type="button"
               onClick={generateOtp}
-              variant="info"
-              className="w-100"
+              className="btn btn-info"
             >
               Generate OTP
             </Button>
@@ -132,25 +122,22 @@ const Login = () => {
             <Form.Control
               type="number"
               name="otp"
-              placeholder="Enter OTP"
+              placeholder="enter otp"
               onChange={handleChange}
               value={loginDetails.otp}
             />
           </Col>
         </Row>
-        {/* Button row */}
-        <Row className="my-3">
+        {/* button  row  */}
+        <Row className="my-2">
           <Col>
-            <Button type="submit" variant="primary" className="w-100">
-              SignIn
-            </Button>
+            <Button type="submit">SignIn</Button>
           </Col>
           <Col>
             <Button
               onClick={handleReset}
-              type="button"
-              variant="warning"
-              className="w-100"
+              type="reset"
+              className="btn btn-warning"
             >
               Reset
             </Button>
